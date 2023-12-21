@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/asosiy">
+
+    <fragment
+        android:id="@+id/asosiy"
+        android:name="com.example.nazorat.fragments.Asosiy"
+        android:label="fragment_asosiy"
+        tools:layout="@layout/fragment_asosiy" >
+        <action
+            android:id="@+id/action_asosiy_to_buyurtmalar"
+            app:destination="@id/buyurtmalar" />
+        <action
+            android:id="@+id/action_asosiy_to_addMahsulot"
+            app:destination="@id/addMahsulot" />
+        <action
+            android:id="@+id/action_asosiy_to_mahsulotlarniOzgartirish"
+            app:destination="@id/mahsulotlarniOzgartirish" />
+        <action
+            android:id="@+id/action_asosiy_to_info2"
+            app:destination="@id/info2" />
+    </fragment>
+    <fragment
+        android:id="@+id/buyurtmalar"
+        android:name="com.example.nazorat.fragments.Buyurtmalar"
+        android:label="fragment_buyurtmalar"
+        tools:layout="@layout/fragment_buyurtmalar" >
+        <action
+            android:id="@+id/action_buyurtmalar_to_asosiy"
+            app:destination="@id/asosiy" />
+        <action
+            android:id="@+id/action_buyurtmalar_to_info2"
+            app:destination="@id/info2" />
+    </fragment>
+    <fragment
+        android:id="@+id/addMahsulot"
+        android:name="com.example.nazorat.fragments.AddMahsulot"
+        android:label="fragment_add_mahsulot"
+        tools:layout="@layout/fragment_add_mahsulot" >
+        <action
+            android:id="@+id/action_addMahsulot_to_asosiy"
+            app:destination="@id/asosiy" />
+    </fragment>
+    <fragment
+        android:id="@+id/mahsulotlarniOzgartirish"
+        android:name="com.example.nazorat.fragments.MahsulotlarniOzgartirish"
+        android:label="fragment_mahsulotlarni_ozgartirish"
+        tools:layout="@layout/fragment_mahsulotlarni_ozgartirish" >
+        <action
+            android:id="@+id/action_mahsulotlarniOzgartirish_to_asosiy"
+            app:destination="@id/asosiy" />
+        <action
+            android:id="@+id/action_mahsulotlarniOzgartirish_to_info2"
+            app:destination="@id/info2" />
+        <action
+            android:id="@+id/action_mahsulotlarniOzgartirish_to_edits"
+            app:destination="@id/edits" />
+    </fragment>
+    <fragment
+        android:id="@+id/info2"
+        android:name="com.example.nazorat.fragments.Info"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" >
+        <action
+            android:id="@+id/action_info2_to_asosiy"
+            app:destination="@id/asosiy" />
+        <action
+            android:id="@+id/action_info2_to_mahsulotlarniOzgartirish"
+            app:destination="@id/mahsulotlarniOzgartirish" />
+        <action
+            android:id="@+id/action_info2_to_buyurtmalar"
+            app:destination="@id/buyurtmalar" />
+    </fragment>
+    <fragment
+        android:id="@+id/edits"
+        android:name="com.example.nazorat.fragments.Edits"
+        android:label="fragment_edits"
+        tools:layout="@layout/fragment_edits" >
+        <action
+            android:id="@+id/action_edits_to_mahsulotlarniOzgartirish"
+            app:destination="@id/mahsulotlarniOzgartirish" />
+    </fragment>
+</navigation>

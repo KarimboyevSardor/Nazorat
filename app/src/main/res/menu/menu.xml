@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/buyurtma" android:title="Buyurtmalar" android:icon="@drawable/shopping_basket_fill0_wght400_grad0_opsz24" app:showAsAction="always"/>
+    <item android:id="@+id/add1" android:title="Poyabzal qo'shish" android:icon="@drawable/add_fill0_wght400_grad0_opsz24" app:showAsAction="always"/>
+</menu>
