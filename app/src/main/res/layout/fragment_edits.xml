@@ -6,10 +6,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.Edits">
 
-    <ScrollView
+    <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/toolbar"
+        android:background="#ff44"
+        app:title="Malumotlarni o'zgaritirish"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toBottomOf="parent"
         >
     <LinearLayout

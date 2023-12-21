@@ -9,10 +9,15 @@ import android.os.Bundle
 import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.findNavController
 import com.example.nazorat.R
 import com.example.nazorat.databinding.FragmentEditsBinding
 import com.example.nazorat.models.Mahsulotlar
@@ -39,6 +44,7 @@ class Edits : Fragment() {
     private var PICK_IMAGE_REQUEST = 1
     lateinit var bitmap: Bitmap
     lateinit var myDb: MyDb
+    private var m: Int = -1
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -46,9 +52,12 @@ class Edits : Fragment() {
         binding = FragmentEditsBinding.inflate(inflater, container, false)
 
         binding!!.apply {
+            val activity = activity as AppCompatActivity
+            activity.setSupportActionBar(toolbar)
+            setHasOptionsMenu(true)
             myDb = MyDb(requireContext())
             val viewModel = getViewModel(requireActivity())
-            val m = arguments?.getInt("mah")!!
+            m = arguments?.getInt("mah")!!
             val mahsulot = mahsulotlarList.filter { it.id == m}[0]
             narxi.setText(mahsulot.narxi)
             nameEt.setText(mahsulot.nomi)
@@ -111,4 +120,25 @@ class Edits : Fragment() {
             binding!!.rasm.setImageBitmap(bitmap)
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.del_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.delete_mah -> {
+                val viewModel = getViewModel(requireActivity())
+                myDb.deleteMahsulot(Mahsulotlar(id = m))
+                mahsulotlarList = myDb.getMahsulot()
+                viewModel.mahsulotlarMutableLiveData!!.value = mahsulotlarList
+                Toast.makeText(requireContext(), "Malumot o'chirildi.", Toast.LENGTH_SHORT).show()
+                findNavController().navigateUp()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+
 }
